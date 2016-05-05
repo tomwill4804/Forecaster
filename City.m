@@ -42,7 +42,7 @@ static int getForecast = 2;
 //
 //  build apiData request and start the request
 //
--(void)updateWeather:(id<CityDelegate>) delegate{
+-(void)updateForecast:(id<CityDelegate>) delegate{
     
     
 }

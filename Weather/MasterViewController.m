@@ -75,6 +75,7 @@
     if (cvc.city.name.length > 0){
         [self.managedObjectContext insertObject:cvc.city];
         [cvc.city save];
+        [cvc.city updateForecast:nil];
     }
     
     
