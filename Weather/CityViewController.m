@@ -7,13 +7,9 @@
 //
 
 #import "CityViewController.h"
-#import "APIData.h"
 
-@interface CityViewController () {
+@interface CityViewController ()
     
-    APIData* data;
-    
-}
 
 @end
 
@@ -50,9 +46,18 @@
 //
 -(IBAction)findButtonPushed:(id)sender{
     
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"City"
+                                              inManagedObjectContext:self.managedObjectContext];
+    City* city = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     
+    [city validateZip:self.zipCodeField.text delegate:self];
     
+}
+
+-(void) cityUpdated:(City*) city {
     
+    if(city.apidata.errorText)
+        self.messageLabel.text = city.apidata.errorText;
     
 }
 

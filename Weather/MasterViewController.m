@@ -53,7 +53,13 @@
         controller.navigationItem.leftItemsSupplementBackButton = YES;
         
     }
-                                                          
+    
+    else if ([[segue identifier] isEqualToString:@"showCity"]) {
+        CityViewController *controller = (CityViewController *)[[segue destinationViewController] topViewController];
+        controller.managedObjectContext = self.managedObjectContext;
+        
+    }
+    
 }
 
 //
