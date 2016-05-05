@@ -15,10 +15,14 @@
 		E3685BAC1CDBA7B80037BFA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3685BAA1CDBA7B80037BFA6 /* Main.storyboard */; };
 		E3685BAE1CDBA7B80037BFA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3685BAD1CDBA7B80037BFA6 /* Assets.xcassets */; };
 		E3685BB11CDBA7B80037BFA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3685BAF1CDBA7B80037BFA6 /* LaunchScreen.storyboard */; };
+		E3685BBC1CDBABD70037BFA6 /* City+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E3685BB91CDBABD70037BFA6 /* City+CoreDataProperties.m */; };
+		E3685BBD1CDBABD70037BFA6 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = E3685BBB1CDBABD70037BFA6 /* City.m */; };
+		E3685BC01CDBB0BE0037BFA6 /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3685BBF1CDBB0BE0037BFA6 /* CityViewController.m */; };
+		E3685BC31CDBB5240037BFA6 /* APIData.m in Sources */ = {isa = PBXBuildFile; fileRef = E3685BC21CDBB5240037BFA6 /* APIData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E3685B981CDBA7B80037BFA6 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3685B981CDBA7B80037BFA6 /* Forecaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3685B9C1CDBA7B80037BFA6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E3685B9E1CDBA7B80037BFA6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E3685B9F1CDBA7B80037BFA6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -31,6 +35,14 @@
 		E3685BAD1CDBA7B80037BFA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3685BB01CDBA7B80037BFA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3685BB21CDBA7B80037BFA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3685BB81CDBABD70037BFA6 /* City+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "City+CoreDataProperties.h"; sourceTree = "<group>"; };
+		E3685BB91CDBABD70037BFA6 /* City+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "City+CoreDataProperties.m"; sourceTree = "<group>"; };
+		E3685BBA1CDBABD70037BFA6 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		E3685BBB1CDBABD70037BFA6 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		E3685BBE1CDBB0BE0037BFA6 /* CityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityViewController.h; sourceTree = "<group>"; };
+		E3685BBF1CDBB0BE0037BFA6 /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityViewController.m; sourceTree = "<group>"; };
+		E3685BC11CDBB5240037BFA6 /* APIData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIData.h; sourceTree = "<group>"; };
+		E3685BC21CDBB5240037BFA6 /* APIData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +59,11 @@
 		E3685B8F1CDBA7B80037BFA6 = {
 			isa = PBXGroup;
 			children = (
-				E3685B9A1CDBA7B80037BFA6 /* Weather */,
+				E3685BB81CDBABD70037BFA6 /* City+CoreDataProperties.h */,
+				E3685BB91CDBABD70037BFA6 /* City+CoreDataProperties.m */,
+				E3685BBA1CDBABD70037BFA6 /* City.h */,
+				E3685BBB1CDBABD70037BFA6 /* City.m */,
+				E3685B9A1CDBA7B80037BFA6 /* Forecaster */,
 				E3685B991CDBA7B80037BFA6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,16 +71,20 @@
 		E3685B991CDBA7B80037BFA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E3685B981CDBA7B80037BFA6 /* Weather.app */,
+				E3685B981CDBA7B80037BFA6 /* Forecaster.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E3685B9A1CDBA7B80037BFA6 /* Weather */ = {
+		E3685B9A1CDBA7B80037BFA6 /* Forecaster */ = {
 			isa = PBXGroup;
 			children = (
 				E3685B9E1CDBA7B80037BFA6 /* AppDelegate.h */,
 				E3685B9F1CDBA7B80037BFA6 /* AppDelegate.m */,
+				E3685BC11CDBB5240037BFA6 /* APIData.h */,
+				E3685BC21CDBB5240037BFA6 /* APIData.m */,
+				E3685BBE1CDBB0BE0037BFA6 /* CityViewController.h */,
+				E3685BBF1CDBB0BE0037BFA6 /* CityViewController.m */,
 				E3685BA41CDBA7B80037BFA6 /* MasterViewController.h */,
 				E3685BA51CDBA7B80037BFA6 /* MasterViewController.m */,
 				E3685BA71CDBA7B80037BFA6 /* DetailViewController.h */,
@@ -76,6 +96,7 @@
 				E3685BA11CDBA7B80037BFA6 /* Weather.xcdatamodeld */,
 				E3685B9B1CDBA7B80037BFA6 /* Supporting Files */,
 			);
+			name = Forecaster;
 			path = Weather;
 			sourceTree = "<group>";
 		};
@@ -90,9 +111,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E3685B971CDBA7B80037BFA6 /* Weather */ = {
+		E3685B971CDBA7B80037BFA6 /* Forecaster */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E3685BB51CDBA7B80037BFA6 /* Build configuration list for PBXNativeTarget "Weather" */;
+			buildConfigurationList = E3685BB51CDBA7B80037BFA6 /* Build configuration list for PBXNativeTarget "Forecaster" */;
 			buildPhases = (
 				E3685B941CDBA7B80037BFA6 /* Sources */,
 				E3685B951CDBA7B80037BFA6 /* Frameworks */,
@@ -102,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = Weather;
+			name = Forecaster;
 			productName = Weather;
-			productReference = E3685B981CDBA7B80037BFA6 /* Weather.app */;
+			productReference = E3685B981CDBA7B80037BFA6 /* Forecaster.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -121,7 +142,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E3685B931CDBA7B80037BFA6 /* Build configuration list for PBXProject "Weather" */;
+			buildConfigurationList = E3685B931CDBA7B80037BFA6 /* Build configuration list for PBXProject "Forecaster" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -134,7 +155,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E3685B971CDBA7B80037BFA6 /* Weather */,
+				E3685B971CDBA7B80037BFA6 /* Forecaster */,
 			);
 		};
 /* End PBXProject section */
@@ -157,11 +178,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3685BBC1CDBABD70037BFA6 /* City+CoreDataProperties.m in Sources */,
 				E3685BA91CDBA7B80037BFA6 /* DetailViewController.m in Sources */,
 				E3685BA61CDBA7B80037BFA6 /* MasterViewController.m in Sources */,
 				E3685BA31CDBA7B80037BFA6 /* Weather.xcdatamodeld in Sources */,
+				E3685BC31CDBB5240037BFA6 /* APIData.m in Sources */,
 				E3685BA01CDBA7B80037BFA6 /* AppDelegate.m in Sources */,
+				E3685BBD1CDBABD70037BFA6 /* City.m in Sources */,
 				E3685B9D1CDBA7B80037BFA6 /* main.m in Sources */,
+				E3685BC01CDBB0BE0037BFA6 /* CityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +303,7 @@
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dtssoftware.Weather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Forecaster;
 			};
 			name = Debug;
 		};
@@ -289,14 +314,14 @@
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dtssoftware.Weather;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Forecaster;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E3685B931CDBA7B80037BFA6 /* Build configuration list for PBXProject "Weather" */ = {
+		E3685B931CDBA7B80037BFA6 /* Build configuration list for PBXProject "Forecaster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E3685BB31CDBA7B80037BFA6 /* Debug */,
@@ -305,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E3685BB51CDBA7B80037BFA6 /* Build configuration list for PBXNativeTarget "Weather" */ = {
+		E3685BB51CDBA7B80037BFA6 /* Build configuration list for PBXNativeTarget "Forecaster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E3685BB61CDBA7B80037BFA6 /* Debug */,
