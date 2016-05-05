@@ -11,7 +11,7 @@
 @protocol APIDataDelegate <NSObject>
 
 @required
--(void)gotAPIData;
+-(void)gotAPIData:(id)apidata;
 
 @end
 

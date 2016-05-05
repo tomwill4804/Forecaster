@@ -159,7 +159,7 @@
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lYg-pi-elq">
                             <connections>
-                                <segue destination="Y24-es-FdE" kind="showDetail" identifier="newCity" id="SSJ-am-9JJ"/>
+                                <segue destination="Y24-es-FdE" kind="showDetail" identifier="showCity" id="SSJ-am-9JJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -180,20 +180,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Zip Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PCq-nK-uFN">
-                                <rect key="frame" x="120" y="128" width="360" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PCq-nK-uFN">
+                                <rect key="frame" x="252" y="128" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="cJL-rO-E1V"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RV-CK-sCX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RV-CK-sCX">
                                 <rect key="frame" x="275" y="194" width="51" height="30"/>
                                 <state key="normal" title="Lookup"/>
                                 <connections>
                                     <action selector="findButtonPushed:" destination="yPh-Yz-RCO" eventType="touchUpInside" id="8Uc-9C-87c"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4u-qI-fsl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4u-qI-fsl">
                                 <rect key="frame" x="279" y="252" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="FOc-wo-kwV"/>
+                                    <constraint firstAttribute="width" constant="42" id="j8H-uM-1dv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -201,14 +208,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PCq-nK-uFN" firstAttribute="centerX" secondItem="25F-f2-z89" secondAttribute="centerX" id="K99-xL-4Yq"/>
-                            <constraint firstItem="PCq-nK-uFN" firstAttribute="top" secondItem="Q9I-hx-dgl" secondAttribute="bottom" constant="64" id="Tsn-1s-a3i"/>
-                            <constraint firstItem="PCq-nK-uFN" firstAttribute="width" secondItem="25F-f2-z89" secondAttribute="width" multiplier="0.6" id="wC6-jD-bfZ"/>
+                            <constraint firstItem="PCq-nK-uFN" firstAttribute="top" secondItem="Q9I-hx-dgl" secondAttribute="bottom" constant="64" id="SwP-DF-HxR"/>
+                            <constraint firstItem="N4u-qI-fsl" firstAttribute="top" secondItem="6RV-CK-sCX" secondAttribute="bottom" constant="28" id="fNg-yn-5qi"/>
+                            <constraint firstItem="PCq-nK-uFN" firstAttribute="centerX" secondItem="25F-f2-z89" secondAttribute="centerX" id="iSh-e8-iQ6"/>
+                            <constraint firstItem="6RV-CK-sCX" firstAttribute="centerX" secondItem="N4u-qI-fsl" secondAttribute="centerX" id="k8c-bj-o7s"/>
+                            <constraint firstItem="PCq-nK-uFN" firstAttribute="centerX" secondItem="6RV-CK-sCX" secondAttribute="centerX" id="nYr-hN-NRh"/>
+                            <constraint firstItem="6RV-CK-sCX" firstAttribute="top" secondItem="PCq-nK-uFN" secondAttribute="bottom" constant="36" id="rpu-kT-xka"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="E9r-fp-fYL"/>
                     <connections>
+                        <outlet property="lookupButton" destination="6RV-CK-sCX" id="mt7-nz-nFS"/>
                         <outlet property="messageLabel" destination="N4u-qI-fsl" id="V4A-Jy-Hrb"/>
+                        <outlet property="zipCodeField" destination="PCq-nK-uFN" id="Weu-nX-CHW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0d-KC-Prd" userLabel="First Responder" sceneMemberID="firstResponder"/>

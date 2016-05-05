@@ -8,12 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "APIData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface City : NSManagedObject
+@protocol CityDelegate <NSObject>
 
-// Insert code here to declare functionality of your managed object subclass
+-(void)cityUpdated:(id)city;
+
+@end
+
+
+@interface City : NSManagedObject <APIDataDelegate>
+
+@property (strong, nonatomic) APIData* apidata;
+@property (strong, nonatomic) id<CityDelegate> delegate;
+
+-(void)validateZip:(NSString*) zipcode delegate:(id<CityDelegate>) delegate;
+-(void)updateWeather:(id<CityDelegate>) delegate;
 
 @end
 

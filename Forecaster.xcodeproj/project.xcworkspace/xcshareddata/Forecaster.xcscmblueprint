@@ -7,7 +7,7 @@
     "F43D30334DE73373B94E1A9DA7A5424F9CFF4E58" : 0,
     "89E727A5E6C8B296863B8F03774E7D8824858771" : 0
   },
-  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8578A3B5-15FB-4237-99DA-C3CD0F13B015",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1B52F4A1-7320-4DED-86E6-6F2FB22C1F17",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "F43D30334DE73373B94E1A9DA7A5424F9CFF4E58" : "Forecaster\/",
     "89E727A5E6C8B296863B8F03774E7D8824858771" : "2016--April--iOS\/"
@@ -17,12 +17,12 @@
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Forecaster.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/oshort\/2016--April--iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TIYRaleigh\/2016--April--iOS.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "89E727A5E6C8B296863B8F03774E7D8824858771"
     },
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/oshort\/Forecaster.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tomwill4804\/Forecaster",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F43D30334DE73373B94E1A9DA7A5424F9CFF4E58"
     }
