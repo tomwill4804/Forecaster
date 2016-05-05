@@ -8,8 +8,35 @@
 
 #import "City.h"
 
+
 @implementation City
 
-// Insert code here to add functionality to your managed object subclass
+//@dynamic apidata;
+//@dynamic delegate;
+
+
+-(void)validateZip:(NSString*) zipcode delegate:(id<CityDelegate>) delegate{
+    
+    self.apidata = [[APIData alloc] init];
+    self.delegate = delegate;
+    
+    NSString* req = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:%@&sensor=false", zipcode];
+    [self.apidata startRequest:req delegate:self];
+    
+}
+
+
+-(void)updateWeather:(id<CityDelegate>) delegate{
+    
+    
+}
+
+-(void)gotAPIData:(APIData*)apidata{
+    
+    NSString* x = apidata.errorText;
+    
+    [self.delegate cityUpdated:self];
+    
+}
 
 @end

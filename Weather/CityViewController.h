@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "City.h"
 
-@interface CityViewController : UIViewController<UITextFieldDelegate>
+@interface CityViewController : UIViewController<UITextFieldDelegate, CityDelegate>
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) City* city;
 
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;

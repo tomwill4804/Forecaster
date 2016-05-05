@@ -45,7 +45,7 @@ didCompleteWithError:(nullable NSError *)error{
             self.errorText = self.dictionary[@"message"];
             self.dictionary = nil;
         }
-        [self.delegate gotAPIData];
+        [self.delegate gotAPIData:self];
     }
     
 }
