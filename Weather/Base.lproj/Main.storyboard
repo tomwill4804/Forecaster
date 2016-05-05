@@ -194,11 +194,11 @@
                                     <action selector="findButtonPushed:" destination="yPh-Yz-RCO" eventType="touchUpInside" id="8Uc-9C-87c"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4u-qI-fsl">
-                                <rect key="frame" x="279" y="252" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4u-qI-fsl">
+                                <rect key="frame" x="203" y="253" width="194" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="FOc-wo-kwV"/>
-                                    <constraint firstAttribute="width" constant="42" id="j8H-uM-1dv"/>
+                                    <constraint firstAttribute="width" constant="150" id="j8H-uM-1dv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

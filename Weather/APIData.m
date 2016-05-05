@@ -45,8 +45,9 @@ didCompleteWithError:(nullable NSError *)error{
             self.errorText = self.dictionary[@"message"];
             self.dictionary = nil;
         }
-        [self.delegate gotAPIData:self];
     }
+    
+    [self.delegate gotAPIData:self];
     
 }
 
@@ -66,7 +67,7 @@ didCompleteWithError:(nullable NSError *)error{
 
 
 //
-//
+//  handle tcpip handshake
 //
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {

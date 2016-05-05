@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) APIData* apidata;
 @property (strong, nonatomic) id<CityDelegate> delegate;
+@property                     BOOL doSave;
+
 
 -(void)validateZip:(NSString*) zipcode delegate:(id<CityDelegate>) delegate;
 -(void)updateWeather:(id<CityDelegate>) delegate;

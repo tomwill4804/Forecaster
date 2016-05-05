@@ -11,30 +11,90 @@
 
 @implementation City
 
-//@dynamic apidata;
-//@dynamic delegate;
+@synthesize apidata;
+@synthesize delegate;
+@synthesize doSave;
+
+static int getZip = 1;
+static int getForecast = 2;
 
 
+//
+//  validate a zip code
+//
+//  build apiData request
+//
 -(void)validateZip:(NSString*) zipcode delegate:(id<CityDelegate>) delegate{
     
     self.apidata = [[APIData alloc] init];
     self.delegate = delegate;
     
-    NSString* req = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:%@&sensor=false", zipcode];
+    NSString* req = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:%@&sensor=false", zipcode];
+    
+    apidata.userType = getZip;
     [self.apidata startRequest:req delegate:self];
     
 }
 
 
+//
+//  update the weather information for this city
+//
+//  build apiData request and start the request
+//
 -(void)updateWeather:(id<CityDelegate>) delegate{
     
     
 }
 
+//
+//  we are back from the apiData request
+//
+//  see if we got good zipcode info or good forecast info
+//
 -(void)gotAPIData:(APIData*)apidata{
     
-    NSString* x = apidata.errorText;
+    if(!self.apidata.errorText) {
+        
+        //
+        //  process the zip code api call
+        //
+        if(self.apidata.userType == getZip) {
+            NSDictionary *dict = self.apidata.dictionary[@"results"][0];
+            
+            if(dict) {
+                
+                self.name = dict[@"formatted_address"];
+                
+            }
+        }
+        
+        //
+        //  process the forecast api call
+        //
+        else if(self.apidata.userType == getForecast) {
+            
+            
+        }
+        
+        //
+        //  see if we need to save the object
+        //
+        if(self.doSave){
+            
+            NSError *error = nil;
+            if (![self.managedObjectContext save:&error]) {
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                abort();
+            }
+            
+        }
+        
+    }
     
+    //
+    //  let caller know we are done
+    //
     [self.delegate cityUpdated:self];
     
 }

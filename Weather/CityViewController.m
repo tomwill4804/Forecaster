@@ -24,7 +24,7 @@
 }
 
 //
-//  enable lookup if text in zip code field
+//  enable lookup if text in zipcode field
 //
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
@@ -42,22 +42,28 @@
 
 
 //
-//  try and find city for this zip code
+//  try and find city for this zipcode
 //
 -(IBAction)findButtonPushed:(id)sender{
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"City"
                                               inManagedObjectContext:self.managedObjectContext];
-    City* city = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    City* city = (City*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     
     [city validateZip:self.zipCodeField.text delegate:self];
     
 }
 
+
+//
+//  we are back from the zipcode lookup
+//
 -(void) cityUpdated:(City*) city {
     
     if(city.apidata.errorText)
         self.messageLabel.text = city.apidata.errorText;
+    
+    self.messageLabel.text = city.name;
     
 }
 
