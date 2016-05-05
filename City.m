@@ -60,12 +60,25 @@ static int getForecast = 2;
         //  process the zip code api call
         //
         if(self.apidata.userType == getZip) {
-            NSDictionary *dict = self.apidata.dictionary[@"results"][0];
             
-            if(dict) {
+            NSString* status = self.apidata.dictionary[@"status"];
+            if (![status isEqualToString:@"OK"]) {
+                self.apidata.errorText = status;
+            }
+            
+            else {
+                NSDictionary *dict = self.apidata.dictionary[@"results"][0];
                 
-                self.name = dict[@"formatted_address"];
-                
+                if(dict) {
+                    
+                    self.name = dict[@"formatted_address"];
+                    
+                    NSDictionary *loc = dict[@"geometry"][@"location"];
+                    self.latitude = loc[@"lat"];
+                    self.longitude = loc[@"lng"];
+                    self.coordinates = [NSString stringWithFormat:@"%@,%@", self.latitude, self.longitude];
+                    
+                }
             }
         }
         
@@ -80,7 +93,7 @@ static int getForecast = 2;
         //
         //  see if we need to save the object
         //
-        if(self.doSave)
+        if(self.doSave && !self.apidata.errorText)
             [self save];
         
     }

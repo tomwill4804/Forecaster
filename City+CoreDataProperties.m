@@ -1,6 +1,6 @@
 //
 //  City+CoreDataProperties.m
-//  Weather
+//  Forecaster
 //
 //  Created by Tom Williamson on 5/5/16.
 //  Copyright © 2016 Tom Williamson. All rights reserved.
@@ -13,16 +13,17 @@
 
 @implementation City (CoreDataProperties)
 
-@dynamic name;
-@dynamic temperature;
-@dynamic zip;
-@dynamic updatedAt;
+@dynamic city;
 @dynamic forecast;
 @dynamic forecastLike;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic name;
 @dynamic shortName;
-@dynamic city;
 @dynamic state;
+@dynamic temperature;
+@dynamic updatedAt;
+@dynamic zip;
+@dynamic coordinates;
 
 @end

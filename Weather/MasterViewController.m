@@ -108,7 +108,9 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    
     [self configureCell:cell withObject:object];
+    
     return cell;
     
 }
@@ -149,6 +151,7 @@
     City *city = (City*)object;
     
     cell.textLabel.text = city.name;
+    cell.detailTextLabel.text = city.coordinates;
     
 }
 

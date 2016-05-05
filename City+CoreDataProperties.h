@@ -1,6 +1,6 @@
 //
 //  City+CoreDataProperties.h
-//  Weather
+//  Forecaster
 //
 //  Created by Tom Williamson on 5/5/16.
 //  Copyright © 2016 Tom Williamson. All rights reserved.
@@ -15,17 +15,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface City (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSNumber *temperature;
-@property (nullable, nonatomic, retain) NSString *zip;
-@property (nullable, nonatomic, retain) NSDate *updatedAt;
+@property (nullable, nonatomic, retain) NSString *city;
 @property (nullable, nonatomic, retain) NSString *forecast;
 @property (nullable, nonatomic, retain) NSString *forecastLike;
 @property (nullable, nonatomic, retain) NSNumber *latitude;
 @property (nullable, nonatomic, retain) NSNumber *longitude;
+@property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *shortName;
-@property (nullable, nonatomic, retain) NSString *city;
 @property (nullable, nonatomic, retain) NSString *state;
+@property (nullable, nonatomic, retain) NSNumber *temperature;
+@property (nullable, nonatomic, retain) NSDate *updatedAt;
+@property (nullable, nonatomic, retain) NSString *zip;
+@property (nullable, nonatomic, retain) NSString *coordinates;
 
 @end
 
