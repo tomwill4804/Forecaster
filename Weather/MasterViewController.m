@@ -146,7 +146,9 @@
 //
 - (void)configureCell:(UITableViewCell *)cell withObject:(NSManagedObject *)object {
     
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    City *city = (City*)object;
+    
+    cell.textLabel.text = city.name;
     
 }
 
