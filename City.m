@@ -80,15 +80,8 @@ static int getForecast = 2;
         //
         //  see if we need to save the object
         //
-        if(self.doSave){
-            
-            NSError *error = nil;
-            if (![self.managedObjectContext save:&error]) {
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                abort();
-            }
-            
-        }
+        if(self.doSave)
+            [self save];
         
     }
     
@@ -96,6 +89,20 @@ static int getForecast = 2;
     //  let caller know we are done
     //
     [self.delegate cityUpdated:self];
+    
+}
+
+
+//
+//  save this object
+//
+-(void)save{
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
     
 }
 

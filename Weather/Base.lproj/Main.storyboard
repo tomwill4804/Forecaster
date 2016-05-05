@@ -220,9 +220,11 @@
                         <outlet property="lookupButton" destination="6RV-CK-sCX" id="mt7-nz-nFS"/>
                         <outlet property="messageLabel" destination="N4u-qI-fsl" id="V4A-Jy-Hrb"/>
                         <outlet property="zipCodeField" destination="PCq-nK-uFN" id="Weu-nX-CHW"/>
+                        <segue destination="3gE-8N-yS3" kind="unwind" identifier="unwindNewCity" unwindAction="unwindNewCity:" id="ZLG-21-i2l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0d-KC-Prd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3gE-8N-yS3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2116" y="-652"/>
         </scene>

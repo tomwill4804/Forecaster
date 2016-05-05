@@ -54,6 +54,9 @@
         
     }
     
+    //
+    //  go to the new city view controller
+    //
     else if ([[segue identifier] isEqualToString:@"showCity"]) {
         CityViewController *controller = (CityViewController *)[[segue destinationViewController] topViewController];
         controller.managedObjectContext = self.managedObjectContext;
@@ -67,17 +70,30 @@
 //
 -(IBAction)unwindNewCity:(UIStoryboardSegue *)segue {
     
+    CityViewController *cvc = (CityViewController *)[segue sourceViewController];
+    
+    if (cvc.city.name.length > 0){
+        [self.managedObjectContext insertObject:cvc.city];
+        [cvc.city save];
+    }
+    
     
 }
 
 #pragma mark - Table View
 
+//
+//  one section for each section in managed object
+//
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return [[self.fetchedResultsController sections] count];
     
 }
 
+//
+//  one row in table for each row in managed set
+//
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
@@ -85,6 +101,9 @@
     
 }
 
+//
+//  build cell for table
+//
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -94,12 +113,19 @@
     
 }
 
+//
+//  allow edit
+//
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return YES;
     
 }
 
+
+//
+//  see if we are removing a row and we need to delete the managed object
+//
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -115,6 +141,9 @@
     }
 }
 
+//
+//  build cell for table
+//
 - (void)configureCell:(UITableViewCell *)cell withObject:(NSManagedObject *)object {
     
     cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
@@ -123,6 +152,9 @@
 
 #pragma mark - Fetched results controller
 
+//
+//  init the fetched results container
+//
 - (NSFetchedResultsController *)fetchedResultsController
 {
     if (_fetchedResultsController != nil) {
@@ -150,6 +182,10 @@
     return _fetchedResultsController;
 }    
 
+
+//
+//  start table updates
+//
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
 
     [self.tableView beginUpdates];
@@ -173,6 +209,10 @@
     }
 }
 
+
+//
+//  the object changed so update the right table cell
+//
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {

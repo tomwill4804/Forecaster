@@ -48,9 +48,9 @@
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"City"
                                               inManagedObjectContext:self.managedObjectContext];
-    City* city = (City*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    self.city = (City*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     
-    [city validateZip:self.zipCodeField.text delegate:self];
+    [self.city validateZip:self.zipCodeField.text delegate:self];
     
 }
 
@@ -60,10 +60,20 @@
 //
 -(void) cityUpdated:(City*) city {
     
-    if(city.apidata.errorText)
+    //
+    //  see if we got an error
+    //
+    if(self.city.apidata.errorText) {
         self.messageLabel.text = city.apidata.errorText;
+        self.city = nil;
+    }
     
-    self.messageLabel.text = city.name;
+    //
+    //  return to main view controller with new city built
+    //
+    else {
+        [self performSegueWithIdentifier:@"unwindNewCity" sender:self];
+    }
     
 }
 

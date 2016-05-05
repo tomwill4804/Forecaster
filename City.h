@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)validateZip:(NSString*) zipcode delegate:(id<CityDelegate>) delegate;
 -(void)updateWeather:(id<CityDelegate>) delegate;
+-(void)save;
 
 @end
 
