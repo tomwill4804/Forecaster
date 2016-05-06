@@ -22,7 +22,7 @@ static int getForecast = 2;
 //
 //  validate a zip code
 //
-//  build apiData request
+//  build APIData request
 //
 -(void)validateZip:(NSString*) zipcode delegate:(id<CityDelegate>) delegate{
     
@@ -40,7 +40,7 @@ static int getForecast = 2;
 //
 //  update the weather information for this city
 //
-//  build apiData request and start the request
+//  build APIData request and start the request
 //
 -(void)updateForecast:(id<CityDelegate>) delegate{
     
@@ -77,6 +77,7 @@ static int getForecast = 2;
                     self.latitude = loc[@"lat"];
                     self.longitude = loc[@"lng"];
                     self.coordinates = [NSString stringWithFormat:@"%@,%@", self.latitude, self.longitude];
+                    self.updatedAt = [NSDate date];
                     
                 }
             }
