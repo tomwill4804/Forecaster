@@ -77,6 +77,7 @@
         short lastOrder = [lastCity.displayOrder integerValue];
         cvc.city.displayOrder = [NSNumber numberWithInt:lastOrder + 1];
         [cvc.city save];
+        cvc.city.doSave = YES;
         [cvc.city updateForecast:nil];
         
     }
@@ -157,8 +158,8 @@
     cell.showsReorderControl = YES;
     
     cell.textLabel.text = city.name;
-    cell.detailTextLabel.text = city.coordinates;
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.displayOrder];
+    //cell.detailTextLabel.text = city.coordinates;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.temperature];
     
 }
 

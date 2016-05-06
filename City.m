@@ -44,7 +44,14 @@ static int getForecast = 2;
 //
 -(void)updateForecast:(id<CityDelegate>) delegate{
     
+    self.apidata = [[APIData alloc] init];
+    self.delegate = delegate;
     
+    NSString* req = [NSString stringWithFormat:@"https://api.forecast.io/forecast/b706a847fb62309a43d0c68ac494e4b4/%@", self.coordinates];
+    
+    apidata.userType = getForecast;
+    [self.apidata startRequest:req delegate:self];
+
 }
 
 //
@@ -90,7 +97,36 @@ static int getForecast = 2;
         //
         else if(self.apidata.userType == getForecast) {
             
+            NSString* status = self.apidata.dictionary[@"error"];
+            if (status) {
+                self.apidata.errorText = status;
+            }
             
+            else {
+                NSDictionary *dict = self.apidata.dictionary[@"currently"];
+                
+                if(dict) {
+                    
+                    self.summary = dict[@"summary"];
+                    self.icon = dict[@"icon"];
+                    self.nearestStormDistance = dict[@"nearestStormDistance"];
+                    self.nearestStormBearing = dict[@"nearestStormBearing"];
+                    self.precipIntensity = dict[@"precipIntensity"];
+                    self.precipProbability = dict[@"precipProbability"];
+                    self.temperature = dict[@"temperature"];
+                    self.apparentTemperature = dict[@"apparentTemperature"];
+                    self.dewPoint = dict[@"dewPoint"];
+                    self.humidity = dict[@"humidity"];
+                    self.windSpeed = dict[@"windSpeed"];
+                    self.windBearing = dict[@"windBearing"];
+                    self.visibility = dict[@"visibility"];
+                    self.cloudCover = dict[@"cloudCover"];
+                    self.pressure = dict[@"pressure"];
+                    self.ozone = dict[@"ozone"];
+                    self.updatedAt = [NSDate date];
+                    
+                }
+            }
         }
         
         
