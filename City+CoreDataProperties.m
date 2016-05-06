@@ -14,6 +14,7 @@
 @implementation City (CoreDataProperties)
 
 @dynamic city;
+@dynamic coordinates;
 @dynamic forecast;
 @dynamic forecastLike;
 @dynamic latitude;
@@ -24,6 +25,6 @@
 @dynamic temperature;
 @dynamic updatedAt;
 @dynamic zip;
-@dynamic coordinates;
+@dynamic displayOrder;
 
 @end

@@ -22,8 +22,6 @@
     [super viewDidLoad];
 
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    //self.navigationItem.rightBarButtonItem = addButton;
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
@@ -73,9 +71,14 @@
     CityViewController *cvc = (CityViewController *)[segue sourceViewController];
     
     if (cvc.city.name.length > 0){
+        
         [self.managedObjectContext insertObject:cvc.city];
+        City *lastCity = [self.fetchedResultsController.fetchedObjects lastObject];
+        short lastOrder = [lastCity.displayOrder integerValue];
+        cvc.city.displayOrder = [NSNumber numberWithInt:lastOrder + 1];
         [cvc.city save];
         [cvc.city updateForecast:nil];
+        
     }
     
     
@@ -151,8 +154,49 @@
     
     City *city = (City*)object;
     
+    cell.showsReorderControl = YES;
+    
     cell.textLabel.text = city.name;
     cell.detailTextLabel.text = city.coordinates;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.displayOrder];
+    
+}
+
+
+//
+//  rows in table are going to be moved
+//
+//  adjust the display order 
+//
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+      toIndexPath:(NSIndexPath *)destinationIndexPath {
+    
+    self.fetchedResultsController.delegate = nil;
+    
+    NSMutableArray *sortedList = [[self.fetchedResultsController fetchedObjects] mutableCopy];
+    
+    // Object we are moving
+    City *cityWeAreMoving = [sortedList objectAtIndex:sourceIndexPath.row];
+    
+    // remove object from its current position
+    [sortedList removeObject:cityWeAreMoving];
+    
+    // Insert it at it's new position
+    [sortedList insertObject:cityWeAreMoving atIndex:destinationIndexPath.row];
+    
+    // Update the order of them all according to their index in the mutable array
+    int i = 0;
+    for (City *c in sortedList) {
+        NSLog(@"%i - %@", i, c.name);
+        c.displayOrder = [NSNumber numberWithInt: i++];
+    }
+    
+    // Save the managed object context and redo the query
+    [self.managedObjectContext save:nil];
+    self.fetchedResultsController = nil;
+    NSFetchedResultsController *x = self.fetchedResultsController;
+    
+    self.fetchedResultsController.delegate = self;
     
 }
 
@@ -171,7 +215,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"City" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"displayOrder" ascending:YES];
 
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     

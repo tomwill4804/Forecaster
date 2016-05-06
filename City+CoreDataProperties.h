@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface City (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *city;
+@property (nullable, nonatomic, retain) NSString *coordinates;
 @property (nullable, nonatomic, retain) NSString *forecast;
 @property (nullable, nonatomic, retain) NSString *forecastLike;
 @property (nullable, nonatomic, retain) NSNumber *latitude;
@@ -26,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *temperature;
 @property (nullable, nonatomic, retain) NSDate *updatedAt;
 @property (nullable, nonatomic, retain) NSString *zip;
-@property (nullable, nonatomic, retain) NSString *coordinates;
+@property (nullable, nonatomic, retain) NSNumber *displayOrder;
 
 @end
 
