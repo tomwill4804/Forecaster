@@ -2,7 +2,7 @@
 //  City+CoreDataProperties.m
 //  Forecaster
 //
-//  Created by Tom Williamson on 5/5/16.
+//  Created by Nick Perkins on 5/6/16.
 //  Copyright © 2016 Tom Williamson. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,16 +15,27 @@
 
 @dynamic city;
 @dynamic coordinates;
-@dynamic forecast;
-@dynamic forecastLike;
+@dynamic displayOrder;
+@dynamic summary;
+@dynamic icon;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic name;
-@dynamic shortName;
-@dynamic state;
+@dynamic nearestStormDistance;
+@dynamic nearestStormBearing;
 @dynamic temperature;
 @dynamic updatedAt;
 @dynamic zip;
-@dynamic displayOrder;
+@dynamic precipIntensity;
+@dynamic precipProbability;
+@dynamic apparentTemperature;
+@dynamic dewPoint;
+@dynamic humidity;
+@dynamic windSpeed;
+@dynamic windBearing;
+@dynamic visibility;
+@dynamic cloudCover;
+@dynamic pressure;
+@dynamic ozone;
 
 @end
