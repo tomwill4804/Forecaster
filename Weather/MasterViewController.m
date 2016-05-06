@@ -158,7 +158,7 @@
     
     cell.textLabel.text = city.name;
     cell.detailTextLabel.text = city.coordinates;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.displayOrder];
+    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.displayOrder];
     
 }
 

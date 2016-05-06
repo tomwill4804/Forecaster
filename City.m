@@ -82,6 +82,8 @@ static int getForecast = 2;
             }
         }
         
+        
+        
         //
         //  process the forecast api call
         //
@@ -89,6 +91,8 @@ static int getForecast = 2;
             
             
         }
+        
+        
         
         //
         //  see if we need to save the object

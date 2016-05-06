@@ -35,12 +35,12 @@
 //
 //  we are finished.  Make the callback to indicate that we are done
 //
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-didCompleteWithError:(nullable NSError *)error{
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error{
     
     if(!error && self.rawData){
         
         self.dictionary = [NSJSONSerialization JSONObjectWithData:self.rawData options:NSJSONReadingMutableLeaves error:nil];
+        
         if([self.dictionary isKindOfClass:[NSDictionary class]] && self.dictionary[@"message"]) {
             self.errorText = self.dictionary[@"message"];
             self.dictionary = nil;
