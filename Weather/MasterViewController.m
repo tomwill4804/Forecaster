@@ -25,12 +25,33 @@
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
+    //
+    //  setup action for table pulldown
+    //
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getAllForecast)
+                  forControlEvents:UIControlEventValueChanged];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
+    
+}
+
+-(void)getAllForecast{
+
+    for (City *city in [self.fetchedResultsController fetchedObjects]) {
+        [city updateForecast:nil];
+    }
+    
+    [self.refreshControl endRefreshing];
+
     
 }
 
@@ -159,7 +180,7 @@
     
     cell.textLabel.text = city.name;
     //cell.detailTextLabel.text = city.coordinates;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.temperature];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.windSpeed];
     
 }
 
