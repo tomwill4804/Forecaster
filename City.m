@@ -78,7 +78,15 @@ static int getForecast = 2;
                 
                 if(dict) {
                     
+                    //
+                    //  extract fields we want from the dictionary
+                    //
                     self.name = dict[@"formatted_address"];
+                    NSString *match = [NSString stringWithFormat:@", "];
+                    NSScanner *scanner = [NSScanner scannerWithString:self.name];
+                    NSString *cityName;
+                    [scanner scanUpToString:match intoString:&cityName];
+                    self.city = cityName;
                     
                     NSDictionary *loc = dict[@"geometry"][@"location"];
                     self.latitude = loc[@"lat"];
@@ -107,6 +115,9 @@ static int getForecast = 2;
                 
                 if(dict) {
                     
+                    //
+                    //  extract the fields we want from the data dictionary
+                    //
                     self.summary = dict[@"summary"];
                     self.icon = dict[@"icon"];
                     self.nearestStormDistance = dict[@"nearestStormDistance"];
