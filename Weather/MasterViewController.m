@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "CityViewController.h"
 #import "City.h"
+#import "MasterCell.h"
 
 @interface MasterViewController ()
 
@@ -175,12 +176,13 @@
 - (void)configureCell:(UITableViewCell *)cell withObject:(NSManagedObject *)object {
     
     City *city = (City*)object;
+    MasterCell *mcell = (MasterCell*)cell;
     
-    cell.showsReorderControl = YES;
-    
-    cell.textLabel.text = city.name;
-    //cell.detailTextLabel.text = city.coordinates;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.windSpeed];
+    mcell.showsReorderControl = YES;
+    mcell.cityLabel.text = city.city;
+    mcell.forecastLabel.text = city.summary;
+    mcell.tempLabel.text = [NSString stringWithFormat:@"%@ F", city.temperature];
+    mcell.timeLabel.text = @"XXX";
     
 }
 
