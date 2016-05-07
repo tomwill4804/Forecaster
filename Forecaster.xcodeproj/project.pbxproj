@@ -10,6 +10,7 @@
 		7BAFC8911CDBC7D300CF0D42 /* AddCityView.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAFC88D1CDBC7D300CF0D42 /* AddCityView.png */; };
 		7BAFC8921CDBC7D300CF0D42 /* CityTableView.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAFC88E1CDBC7D300CF0D42 /* CityTableView.png */; };
 		7BAFC8931CDBC7D300CF0D42 /* DetailedForecast.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAFC88F1CDBC7D300CF0D42 /* DetailedForecast.png */; };
+		E35AB5D51CDD3D17003E74BE /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35AB5D31CDD3D17003E74BE /* Detail.storyboard */; };
 		E3685B9D1CDBA7B80037BFA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3685B9C1CDBA7B80037BFA6 /* main.m */; };
 		E3685BA01CDBA7B80037BFA6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3685B9F1CDBA7B80037BFA6 /* AppDelegate.m */; };
 		E3685BA31CDBA7B80037BFA6 /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3685BA11CDBA7B80037BFA6 /* Weather.xcdatamodeld */; };
@@ -28,6 +29,7 @@
 		7BAFC88D1CDBC7D300CF0D42 /* AddCityView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AddCityView.png; path = "../../2016--April--iOS/Homework/16 -- Forecaster/AddCityView.png"; sourceTree = "<group>"; };
 		7BAFC88E1CDBC7D300CF0D42 /* CityTableView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CityTableView.png; path = "../../2016--April--iOS/Homework/16 -- Forecaster/CityTableView.png"; sourceTree = "<group>"; };
 		7BAFC88F1CDBC7D300CF0D42 /* DetailedForecast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DetailedForecast.png; path = "../../2016--April--iOS/Homework/16 -- Forecaster/DetailedForecast.png"; sourceTree = "<group>"; };
+		E35AB5D41CDD3D17003E74BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Detail.storyboard; sourceTree = "<group>"; };
 		E3685B981CDBA7B80037BFA6 /* Forecaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forecaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3685B9C1CDBA7B80037BFA6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E3685B9E1CDBA7B80037BFA6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				E3685BA71CDBA7B80037BFA6 /* DetailViewController.h */,
 				E3685BA81CDBA7B80037BFA6 /* DetailViewController.m */,
 				E3685BAA1CDBA7B80037BFA6 /* Main.storyboard */,
+				E35AB5D31CDD3D17003E74BE /* Detail.storyboard */,
 				7BAFC88D1CDBC7D300CF0D42 /* AddCityView.png */,
 				7BAFC88E1CDBC7D300CF0D42 /* CityTableView.png */,
 				7BAFC88F1CDBC7D300CF0D42 /* DetailedForecast.png */,
@@ -178,6 +181,7 @@
 				E3685BAE1CDBA7B80037BFA6 /* Assets.xcassets in Resources */,
 				7BAFC8921CDBC7D300CF0D42 /* CityTableView.png in Resources */,
 				E3685BAC1CDBA7B80037BFA6 /* Main.storyboard in Resources */,
+				E35AB5D51CDD3D17003E74BE /* Detail.storyboard in Resources */,
 				7BAFC8931CDBC7D300CF0D42 /* DetailedForecast.png in Resources */,
 				7BAFC8911CDBC7D300CF0D42 /* AddCityView.png in Resources */,
 			);
@@ -205,6 +209,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		E35AB5D31CDD3D17003E74BE /* Detail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E35AB5D41CDD3D17003E74BE /* Base */,
+			);
+			name = Detail.storyboard;
+			sourceTree = "<group>";
+		};
 		E3685BAA1CDBA7B80037BFA6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
