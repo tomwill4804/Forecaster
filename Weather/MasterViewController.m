@@ -88,7 +88,7 @@
     //  go to the dictionary controller
     //
     else if ([[segue identifier] isEqualToString:@"showDict"]) {
-        DictionaryViewController *controller = (DictionaryViewController *)[segue destinationViewController];
+        DictionaryViewController *controller = (DictionaryViewController *)[[segue destinationViewController] topViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         City *city = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         controller.mTitle = city.name;

@@ -63,6 +63,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="as of mm/dd/yy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zce-3S-Lqt">
                                             <rect key="frame" x="8" y="37" width="192" height="21"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="192" id="d0T-e7-KOv"/>
                                                 <constraint firstAttribute="width" constant="192" id="vNb-fR-sQC"/>
                                                 <constraint firstAttribute="height" constant="21" id="xXi-2a-gXO"/>
                                             </constraints>
@@ -80,8 +81,9 @@
                                             <rect key="frame" x="413" y="13" width="112" height="62"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="112" id="1S2-VY-wJK"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="Rwp-jh-HNz"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -97,6 +99,7 @@
                                         <constraint firstItem="zce-3S-Lqt" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="29" id="Vfc-OK-cK7"/>
                                         <constraint firstItem="zce-3S-Lqt" firstAttribute="leading" secondItem="iGm-qL-Rj8" secondAttribute="leading" id="WYB-XC-kve"/>
                                         <constraint firstItem="SBy-fr-ECg" firstAttribute="trailing" secondItem="iGm-qL-Rj8" secondAttribute="trailing" id="c6H-tw-ox8"/>
+                                        <constraint firstItem="SBy-fr-ECg" firstAttribute="trailing" secondItem="37f-cq-3Eg" secondAttribute="trailingMargin" id="rcK-Mi-iGE"/>
                                         <constraint firstItem="iGm-qL-Rj8" firstAttribute="top" secondItem="zce-3S-Lqt" secondAttribute="bottom" constant="9" id="sc4-TF-R7Y"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -107,7 +110,7 @@
                                     <outlet property="tempLabel" destination="SBy-fr-ECg" id="b8A-1t-f5v"/>
                                     <outlet property="timeLabel" destination="zce-3S-Lqt" id="2BP-KZ-t0W"/>
                                     <segue destination="lvW-QQ-yI6" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
-                                    <segue destination="wcV-sY-sUg" kind="show" identifier="showDict" trigger="accessoryAction" action="showDetailViewController:sender:" id="Ohj-hs-vtf"/>
+                                    <segue destination="cXm-vN-fRE" kind="show" identifier="showDict" trigger="accessoryAction" action="showDetailViewController:sender:" id="Ohj-hs-vtf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -213,10 +216,11 @@
                             <outlet property="delegate" destination="wcV-sY-sUg" id="w1q-lN-2mr"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="piF-z7-FcO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tze-XD-JAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116" y="112"/>
+            <point key="canvasLocation" x="2928" y="112"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iLH-pd-pTL">
@@ -243,6 +247,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Add-Nh-VQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-125" y="223"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="42E-My-Xht">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cXm-vN-fRE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZeT-NG-sXb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wcV-sY-sUg" kind="relationship" relationship="rootViewController" id="0kq-2U-P72"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IeY-9G-oxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2116" y="112"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
