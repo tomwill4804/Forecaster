@@ -19,7 +19,22 @@
     
     [super viewDidLoad];
     
-    self.title = @"Add new city";
+    //
+    //  set title
+    //
+    UILabel *titleView = [UILabel new];
+    titleView.numberOfLines = 2;
+    titleView.textAlignment = NSTextAlignmentCenter;
+    titleView.adjustsFontSizeToFitWidth = YES;
+    titleView.textColor = [UIColor blueColor];
+    titleView.attributedText = [[NSAttributedString alloc]
+                                initWithString:@"please enter a zip code to find the current weather conditions\nAdd City"
+                                attributes:self.navigationController.navigationBar.titleTextAttributes
+                                ];
+    [titleView sizeToFit];
+    self.navigationItem.titleView = titleView;
+    
+    
     
 }
 
