@@ -24,10 +24,10 @@ static int getForecast = 2;
 //
 //  build APIData request
 //
--(void)validateZip:(NSString*) zipcode delegate:(id<CityDelegate>) delegate{
+-(void)validateZip:(NSString*) zipcode delegate:(id<CityDelegate>) delegatex{
     
     self.apidata = [[APIData alloc] init];
-    self.delegate = delegate;
+    self.delegate = delegatex;
     
     NSString* req = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:%@&sensor=false", zipcode];
     
@@ -42,10 +42,10 @@ static int getForecast = 2;
 //
 //  build APIData request and start the request
 //
--(void)updateForecast:(id<CityDelegate>) delegate{
+-(void)updateForecast:(id<CityDelegate>) delegatex{
     
     self.apidata = [[APIData alloc] init];
-    self.delegate = delegate;
+    self.delegate = delegatex;
     
     NSString* req = [NSString stringWithFormat:@"https://api.forecast.io/forecast/b706a847fb62309a43d0c68ac494e4b4/%@", self.coordinates];
     
@@ -78,7 +78,15 @@ static int getForecast = 2;
                 
                 if(dict) {
                     
+                    //
+                    //  extract fields we want from the dictionary
+                    //
                     self.name = dict[@"formatted_address"];
+                    NSString *match = [NSString stringWithFormat:@", "];
+                    NSScanner *scanner = [NSScanner scannerWithString:self.name];
+                    NSString *cityName;
+                    [scanner scanUpToString:match intoString:&cityName];
+                    self.city = cityName;
                     
                     NSDictionary *loc = dict[@"geometry"][@"location"];
                     self.latitude = loc[@"lat"];
@@ -107,24 +115,22 @@ static int getForecast = 2;
                 
                 if(dict) {
                     
-                    self.summary = dict[@"summary"];
-                    self.icon = dict[@"icon"];
-                    self.nearestStormDistance = dict[@"nearestStormDistance"];
-                    self.nearestStormBearing = dict[@"nearestStormBearing"];
-                    self.precipIntensity = dict[@"precipIntensity"];
-                    self.precipProbability = dict[@"precipProbability"];
-                    self.temperature = dict[@"temperature"];
-                    self.apparentTemperature = dict[@"apparentTemperature"];
-                    self.dewPoint = dict[@"dewPoint"];
-                    self.humidity = dict[@"humidity"];
-                    self.windSpeed = dict[@"windSpeed"];
-                    self.windBearing = dict[@"windBearing"];
-                    self.visibility = dict[@"visibility"];
-                    self.cloudCover = dict[@"cloudCover"];
-                    self.pressure = dict[@"pressure"];
-                    self.ozone = dict[@"ozone"];
+                    //
+                    //  extract the fields we want from the data dictionary
+                    //  and update our attributes (fields names must match)
+                    //
+                    
                     self.updatedAt = [NSDate date];
                     
+                    NSArray* fields = @[@"summary",  @"icon", @"nearestStormDistance", @"nearestStormBearing", @"precipIntensity", @"precipProbability",
+                        @"temperature", @"apparentTemperature", @"dewPoint", @"humidity",
+                        @"windSpeed", @"windBearing", @"visibility", @"cloudCover",
+                        @"pressure", @"ozone"];
+                    
+                    for (NSString* key in fields) {
+                         [self setValue:dict[key] forKey:key];
+                        
+                    }
                 }
             }
         }

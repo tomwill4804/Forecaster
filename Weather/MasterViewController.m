@@ -10,6 +10,8 @@
 #import "DetailViewController.h"
 #import "CityViewController.h"
 #import "City.h"
+#import "MasterCell.h"
+#import "DictionaryViewController.h"
 
 @interface MasterViewController ()
 
@@ -81,6 +83,21 @@
         controller.managedObjectContext = self.managedObjectContext;
         
     }
+    
+    //
+    //  go to the dictionary controller
+    //
+    else if ([[segue identifier] isEqualToString:@"showDict"]) {
+        DictionaryViewController *controller = (DictionaryViewController *)[[segue destinationViewController] topViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        City *city = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        controller.mTitle = city.name;
+        NSArray *keys = [[[city entity] attributesByName] allKeys];
+        NSDictionary *dict = [city dictionaryWithValuesForKeys:keys];
+        controller.dictionary = dict;
+        
+    }
+
     
 }
 
@@ -175,12 +192,21 @@
 - (void)configureCell:(UITableViewCell *)cell withObject:(NSManagedObject *)object {
     
     City *city = (City*)object;
+    MasterCell *mcell = (MasterCell*)cell;
     
-    cell.showsReorderControl = YES;
+    mcell.showsReorderControl = YES;
+    mcell.cityLabel.text = city.city;
+    mcell.forecastLabel.text = city.summary;
+    mcell.tempLabel.text = [NSString stringWithFormat:@"%ld\u00B0 F", [city.temperature integerValue]];
     
-    cell.textLabel.text = city.name;
-    //cell.detailTextLabel.text = city.coordinates;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", city.windSpeed];
+    //
+    //  updated time
+    //
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeStyle = NSDateFormatterMediumStyle;
+    NSString *time = [dateFormatter stringFromDate:city.updatedAt];
+    mcell.timeLabel.text = [NSString stringWithFormat:@"as of %@", time];
     
 }
 
