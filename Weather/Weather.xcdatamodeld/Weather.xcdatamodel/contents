@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
     <entity name="City" representedClassName="City" syncable="YES">
+        <attribute name="apparentTemperature" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="forecast" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="forecastLike" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="cloudCover" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="coordinates" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dewPoint" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="displayOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="temperature" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="nearestStormBearing" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="nearestStormDistance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="ozone" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipIntensity" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipProbability" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="pressure" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="temperature" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="visibility" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="windBearing" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="City" positionX="-54" positionY="-9" width="128" height="210"/>
+        <element name="City" positionX="-54" positionY="-9" width="128" height="403"/>
     </elements>
 </model>

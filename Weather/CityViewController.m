@@ -19,12 +19,27 @@
     
     [super viewDidLoad];
     
-    self.title = @"Add new city";
+    //
+    //  set title
+    //
+    UILabel *titleView = [UILabel new];
+    titleView.numberOfLines = 2;
+    titleView.textAlignment = NSTextAlignmentCenter;
+    titleView.adjustsFontSizeToFitWidth = YES;
+    titleView.textColor = [UIColor blueColor];
+    titleView.attributedText = [[NSAttributedString alloc]
+                                initWithString:@"please enter a zip code to find the current weather conditions\nAdd City"
+                                attributes:self.navigationController.navigationBar.titleTextAttributes
+                                ];
+    [titleView sizeToFit];
+    self.navigationItem.titleView = titleView;
+    
+    
     
 }
 
 //
-//  enable lookup if text in zip code field
+//  enable lookup if text in zipcode field
 //
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
@@ -42,22 +57,38 @@
 
 
 //
-//  try and find city for this zip code
+//  try and find city for this zipcode
 //
 -(IBAction)findButtonPushed:(id)sender{
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"City"
                                               inManagedObjectContext:self.managedObjectContext];
-    City* city = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+    self.city = (City*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
     
-    [city validateZip:self.zipCodeField.text delegate:self];
+    [self.city validateZip:self.zipCodeField.text delegate:self];
     
 }
 
+
+//
+//  we are back from the zipcode lookup
+//
 -(void) cityUpdated:(City*) city {
     
-    if(city.apidata.errorText)
+    //
+    //  see if we got an error
+    //
+    if(self.city.apidata.errorText) {
         self.messageLabel.text = city.apidata.errorText;
+        self.city = nil;
+    }
+    
+    //
+    //  return to main view controller with new city built
+    //
+    else {
+        [self performSegueWithIdentifier:@"unwindNewCity" sender:self];
+    }
     
 }
 

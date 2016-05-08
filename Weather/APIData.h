@@ -15,14 +15,16 @@
 
 @end
 
-@interface APIData : NSObject
+@interface APIData : NSObject<NSURLSessionDelegate>
 
 @property (strong, nonatomic) id<APIDataDelegate> delegate;
 
-@property (copy, nonatomic)   NSString*     request;
-@property (strong, nonatomic) NSMutableData* rawData;
+@property (copy, nonatomic)   NSString      *request;
+@property (strong, nonatomic) NSMutableData *rawData;
 @property (strong, nonatomic) NSDictionary  *dictionary;
 @property (copy, nonatomic)   NSString      *errorText;
+@property (copy, nonatomic)   NSString      *userField;
+@property (assign)            int           userType;
 
 -(void)startRequest:(NSString*)req delegate:(id<APIDataDelegate>) delegate;
 
