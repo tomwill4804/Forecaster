@@ -20,6 +20,7 @@
         <attribute name="pressure" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="temperature" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="timezone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="visibility" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="windBearing" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -27,6 +28,6 @@
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="City" positionX="-54" positionY="-9" width="128" height="403"/>
+        <element name="City" positionX="-54" positionY="-9" width="128" height="420"/>
     </elements>
 </model>

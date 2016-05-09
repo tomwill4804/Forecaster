@@ -37,5 +37,6 @@
 @dynamic cloudCover;
 @dynamic pressure;
 @dynamic ozone;
+@dynamic timezone;
 
 @end

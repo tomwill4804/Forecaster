@@ -22,16 +22,49 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = @"Forecaster";
+    //
+    //   sets background image and makes transparent navigation bar based on time of day
+    //
+    NSDate *now = [[NSDate alloc]init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"HH"];
+    NSString *aDate = [formatter stringFromDate:now];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterNoStyle;
+    NSNumber *hour = [numberFormatter numberFromString:aDate];
+    NSNumber *limit = @18;
+    if (hour < limit){
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background-day"]];
+    }else{
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background-night"]];
+    }
+    
+
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     //
     //  setup action for table pulldown
     //
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    if (hour < limit){
+        self.refreshControl.backgroundColor = [UIColor colorWithRed:31/255.0 green:105/255.0 blue:130/255.0 alpha:1.0];
+    }else{
+        self.refreshControl.backgroundColor = [UIColor colorWithRed:143/255.0 green:76/255.0 blue:160/255.0 alpha:1.0];
+    }
+    
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
                             action:@selector(getAllForecast)
@@ -51,6 +84,16 @@
     for (City *city in [self.fetchedResultsController fetchedObjects]) {
         [city updateForecast:nil];
     }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    dateFormatter.doesRelativeDateFormatting = YES;
+    NSString *title = [NSString stringWithFormat:@"Last update: %@", [dateFormatter stringFromDate:[NSDate date]]];
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                forKey:NSForegroundColorAttributeName];
+    NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+    self.refreshControl.attributedTitle = attributedTitle;
     
     [self.refreshControl endRefreshing];
 
@@ -152,6 +195,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     
+    //
+    // Remove the bottom cell dividing lines NICK
+    //
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.tableView.separatorColor = [UIColor colorWithWhite:.5 alpha:.8];
+    
     [self configureCell:cell withObject:object];
     
     return cell;
@@ -197,16 +246,24 @@
     mcell.showsReorderControl = YES;
     mcell.cityLabel.text = city.city;
     mcell.forecastLabel.text = city.summary;
-    mcell.tempLabel.text = [NSString stringWithFormat:@"%ld\u00B0 F", [city.temperature integerValue]];
+    mcell.tempLabel.text = [NSString stringWithFormat:@"%ld\u00B0", [city.temperature integerValue]];
+    mcell.backgroundColor = [UIColor colorWithWhite:.3 alpha:.3];
+    [mcell.contentView.layer setBorderColor:[UIColor colorWithWhite:.4 alpha:.3].CGColor];
+    [mcell.contentView.layer setBorderWidth:0.5f];
     
     //
     //  updated time
     //
+    NSDate* now = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    dateFormatter.timeStyle = NSDateFormatterMediumStyle;
-    NSString *time = [dateFormatter stringFromDate:city.updatedAt];
-    mcell.timeLabel.text = [NSString stringWithFormat:@"as of %@", time];
+    dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    dateFormatter.doesRelativeDateFormatting = YES;
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:city.timezone];
+    NSLog(@"%@", city.timezone);
+    NSString *time = [dateFormatter stringFromDate:now];
+    mcell.timeLabel.text = [NSString stringWithFormat:@"%@", time];
+    mcell.iconImage.image = [UIImage imageNamed:city.icon];
     
 }
 
