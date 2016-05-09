@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *cloudCover;
 @property (nullable, nonatomic, retain) NSNumber *pressure;
 @property (nullable, nonatomic, retain) NSNumber *ozone;
+@property (nullable, nonatomic, retain) NSString *timezone;
 
 @end
 

@@ -125,7 +125,7 @@ static int getForecast = 2;
                     NSArray* fields = @[@"summary",  @"icon", @"nearestStormDistance", @"nearestStormBearing", @"precipIntensity", @"precipProbability",
                         @"temperature", @"apparentTemperature", @"dewPoint", @"humidity",
                         @"windSpeed", @"windBearing", @"visibility", @"cloudCover",
-                        @"pressure", @"ozone"];
+                        @"pressure", @"ozone", @"timezone"];
                     
                     for (NSString* key in fields) {
                          [self setValue:dict[key] forKey:key];

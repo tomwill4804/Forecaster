@@ -22,17 +22,25 @@
     //
     //  set title
     //
-    UILabel *titleView = [UILabel new];
-    titleView.numberOfLines = 2;
-    titleView.textAlignment = NSTextAlignmentCenter;
-    titleView.adjustsFontSizeToFitWidth = YES;
-    titleView.textColor = [UIColor blueColor];
-    titleView.attributedText = [[NSAttributedString alloc]
-                                initWithString:@"please enter a zip code to find the current weather conditions\nAdd City"
-                                attributes:self.navigationController.navigationBar.titleTextAttributes
-                                ];
-    [titleView sizeToFit];
-    self.navigationItem.titleView = titleView;
+    NSDate *now = [[NSDate alloc]init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"HH"];
+    NSString *aDate = [formatter stringFromDate:now];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterNoStyle;
+    NSNumber *hour = [numberFormatter numberFromString:aDate];
+    NSNumber *limit = @18;
+    if (hour < limit){
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background-day"]];
+        self.lookupButton.tintColor = [UIColor colorWithRed:23/255.0 green:77/255.0 blue:102/255.0 alpha:1.0];
+        
+    }else{
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background-night"]];
+        self.lookupButton.tintColor = [UIColor colorWithRed:59/255.0 green:31/255.0 blue:135/255.0 alpha:1.0];
+    }
+
+    self.navigationItem.title = @"Enter ZipCode";
+    [self.zipCodeField becomeFirstResponder];
     
     
     
@@ -43,15 +51,23 @@
 //
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
-    NSUInteger length = self.zipCodeField.text.length - range.length + string.length;
-    
-    if (length > 0) {
-        self.lookupButton.enabled = YES;
-    } else {
+    if(self.zipCodeField.text.length >= 5 && range.length == 0)
+    {
         self.lookupButton.enabled = NO;
+        return NO;
     }
-    
+    self.lookupButton.enabled = YES;
     return YES;
+    
+//    NSUInteger length = self.zipCodeField.text.length - range.length + string.length;
+//    
+//    if (length >= 5) {
+//        self.lookupButton.enabled = YES;
+//    } else {
+//        self.lookupButton.enabled = NO;
+//    }
+//    
+//    return YES;
     
 }
 
@@ -79,8 +95,22 @@
     //  see if we got an error
     //
     if(self.city.apidata.errorText) {
-        self.messageLabel.text = city.apidata.errorText;
-        self.city = nil;
+        
+        UIAlertController * alertController =
+        [UIAlertController alertControllerWithTitle:@"Invalid Zipcode"
+                                            message:@"The zipcode you entered was incorrect, please try again."
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction * okAlert = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.city = nil;
+        }];
+        
+        [alertController addAction:okAlert];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+
+        //self.messageLabel.text = city.apidata.errorText;
+        
     }
     
     //

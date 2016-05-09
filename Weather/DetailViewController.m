@@ -7,6 +7,8 @@
 //
 
 #import "DetailViewController.h"
+#import "MasterViewController.h"
+
 
 @interface DetailViewController ()
 
@@ -29,15 +31,49 @@
 - (void)configureView {
    
     if (self.detailItem) {
-    //    self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+    
+        City *city = (City*)self.detailItem;
+        NSDate *now = [[NSDate alloc]init];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"HH"];
+        NSString *aDate = [formatter stringFromDate:now];
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        numberFormatter.numberStyle = NSNumberFormatterNoStyle;
+        NSNumber *hour = [numberFormatter numberFromString:aDate];
+        NSNumber *limit = @18;
+        if (hour < limit)
+        {
+            self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background-day"]];
+        }
+        else
+        {
+            self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background-night2"]];
+        }
+        
+        self.navigationItem.title = city.city;
+        
+        self.iconView.image = [UIImage imageNamed:city.icon];
+        self.conditionsLabel.text = city.summary;
+        self.cityLabel.text = city.city;
+        self.tempLabel.text = [NSString stringWithFormat:@"%ld\u00B0F", [city.temperature integerValue]];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateStyle = NSDateFormatterShortStyle;
+        dateFormatter.timeStyle = NSDateFormatterShortStyle;
+        dateFormatter.doesRelativeDateFormatting = YES;
+        NSString *time = [dateFormatter stringFromDate:city.updatedAt];
+        self.updatedLabel.text = [NSString stringWithFormat:@"%@", time];
+
+        
+        
     }
     
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad  {
     
     [super viewDidLoad];
-   
+    
     [self configureView];
     
 }

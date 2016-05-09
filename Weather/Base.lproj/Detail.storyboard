@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Detail-->
@@ -17,30 +18,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="292" width="560" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZhF-h6-8Qu">
+                                <rect key="frame" x="44" y="88" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="kup-0q-ylx"/>
+                                    <constraint firstAttribute="width" constant="85" id="sie-bV-cd3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100°F" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzH-de-dZz">
+                                <rect key="frame" x="236" y="251" width="129" height="66"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rancho Santo Margarita" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm0-Es-oAJ">
+                                <rect key="frame" x="185" y="337" width="230" height="27"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostly Cloudy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f20-vE-2On">
+                                <rect key="frame" x="200" y="195" width="200" height="40"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, 9:32 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iD4-Pn-Wbc">
+                                <rect key="frame" x="251" y="372" width="98" height="18"/>
+                                <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
+                            <constraint firstItem="dzH-de-dZz" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="1lA-f4-U6E"/>
+                            <constraint firstItem="Rm0-Es-oAJ" firstAttribute="top" secondItem="dzH-de-dZz" secondAttribute="bottom" constant="20" id="4o9-w0-8HM"/>
+                            <constraint firstItem="f20-vE-2On" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="131" id="OIz-xs-fND"/>
+                            <constraint firstItem="f20-vE-2On" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="PPa-L2-REy"/>
+                            <constraint firstItem="iD4-Pn-Wbc" firstAttribute="top" secondItem="Rm0-Es-oAJ" secondAttribute="bottom" constant="8" id="QnM-Qw-8VU"/>
+                            <constraint firstItem="dzH-de-dZz" firstAttribute="top" secondItem="f20-vE-2On" secondAttribute="bottom" constant="16" id="YL3-JI-F6C"/>
+                            <constraint firstItem="ZhF-h6-8Qu" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="24" id="aOa-dq-I7i"/>
+                            <constraint firstItem="iD4-Pn-Wbc" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="idc-DX-f9w"/>
+                            <constraint firstItem="Rm0-Es-oAJ" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="v2r-UM-s25"/>
+                            <constraint firstItem="ZhF-h6-8Qu" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="24" id="xPb-uH-Fhy"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
+                        <outlet property="cityLabel" destination="Rm0-Es-oAJ" id="4cU-hE-YeA"/>
+                        <outlet property="conditionsLabel" destination="f20-vE-2On" id="rAa-22-LiM"/>
+                        <outlet property="iconView" destination="ZhF-h6-8Qu" id="k9n-nW-uNu"/>
+                        <outlet property="tempLabel" destination="dzH-de-dZz" id="28I-7e-Q4e"/>
+                        <outlet property="updatedLabel" destination="iD4-Pn-Wbc" id="oZr-ph-dv1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733" y="233"/>
+            <point key="canvasLocation" x="587" y="908"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
